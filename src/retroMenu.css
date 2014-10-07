@@ -75,5 +75,7 @@ THE SOFTWARE.
     outline: none;
     border: none;
 
+    color: white;
+    text-align: center; 
     background-color: black;
 }

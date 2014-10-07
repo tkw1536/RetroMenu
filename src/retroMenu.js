@@ -346,6 +346,97 @@ var RetroMenu;
     */
 
     /**
+    * Shows an prompt box.
+    *
+    * @param {string} text - Text to prompt the user for.
+    * @param {string} [def = ""] - The default response to start with.
+    * @param {boolean} [hide_input = False] - Should input be hidden (password prompt)
+    * @param {jQuery} [msg_div] - Message element to also add.
+    * @param {RetroMenu~promptCallback} [next] - Callback when the user confirms the message. If omitted, alert does not close until manually closed.
+    *
+    * @function
+    * @instance
+    * @name prompt
+    * @memberof RetroMenu
+    * @return {RetroMenu} - this for chaining
+    */
+    RetroMenu.prototype.prompt = function(text, def, hide_input, msg_div, next){
+
+
+        //first handle all the argument cases
+        console.log(arguments);
+
+        throw new Error("Error: Arguments unimplemented! ");
+        return; 
+
+
+        var me = this;
+
+        //re-init
+        this.init();
+
+        //and the hook element
+        var hook_element = this._hook_element;
+
+        //create the alert div
+        var prompt_div = $("<div>").appendTo(this._display_element);
+
+        var the_input = $("<input type='text'>");
+
+        //Make the input
+        if(hide_input){
+            the_input.attr("type", "password");
+        }
+
+        //create the elements.
+        prompt_div.append([
+            //the text
+            $("<div>").text(text).on("click", function(){alert_div.find("form").submit(); }),
+            msg_div,
+            $("<form>")
+            .append(
+                the_input,
+                $("<input type='submit' value='&nbsp; '>")
+            ).on("submit", function(event){
+                //ok stop things.
+                event.preventDefault();
+
+                if(typeof next == "function"){
+
+                    //remove the div
+                    prompt_div.remove();
+
+                    //and re-init
+                    me.init();
+
+                    //and make the callback
+                    next.call(me, the_input.val());
+                } else {
+                    //Nothing is next => never close
+                    return;
+                }
+            })
+        ]);
+
+        //focus whenever we click, and now also focus
+        this._display_element
+        .on("click.RetroMenu.prompt", function(){
+            the_input.focus();
+        })
+        .click();
+
+        return this;
+    };
+
+
+    /**
+    * Callback for results for prompt dialogs.
+    * @callback RetroMenu~promptCallback
+    * @param {string} result - The result the user enters in the prompt.
+    * @this {RetroMenu} - the RetroMenu instance the alert dialog was called on.
+    */
+
+    /**
     * Shows a select box.
     *
     * @param {string} text - Text to alert the user to.
@@ -607,7 +698,7 @@ var RetroMenu;
     /**
     * Callback for results form select dialogs.
     * @callback RetroMenu~confirmCallback
-    * @param {boolean} confirm - Did the user confirm? 
+    * @param {boolean} confirm - Did the user confirm?
     * @this {RetroMenu} - the RetroMenu instance the alert dialog was called on.
     */
 
