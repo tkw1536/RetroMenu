@@ -246,7 +246,7 @@ var RetroMenu;
     *
     * @param {string} text - Text to alert the user to.
     * @param {jQuery} [msg_div] - Message element to also add.
-    * @param {function} [next] - Callback when the user confirms the message. If omitted, alert does not close until manually closed.
+    * @param {RetroMenu~alertCallback} [next] - Callback when the user confirms the message. If omitted, alert does not close until manually closed.
     *
     * @function
     * @instance
@@ -324,7 +324,7 @@ var RetroMenu;
     * @param {string} title - Title to use for this dialog box.
     * @param {string} text - Text to alert the user to.
     * @param {jQuery} [msg_div] - Message element to also add.
-    * @param {function} [next] - Callback when the user confirms the message. If omitted, alert does not close until manually closed.
+    * @param {RetroMenu~alertCallback} [next] - Callback when the user confirms the message. If omitted, alert does not close until manually closed.
     *
     * @function
     * @name RetroMenu.alert_dialog
@@ -340,13 +340,19 @@ var RetroMenu;
     }
 
     /**
+    * Callback for results form alert dialogs.
+    * @callback RetroMenu~alertCallback
+    * @this {RetroMenu} - the RetroMenu instance the alert dialog was called on.
+    */
+
+    /**
     * Shows a select box.
     *
     * @param {string} text - Text to alert the user to.
     * @param {string[]} options - Options to make the user select from.
     * @param {jQuery} [msg_div] - Message element to also add.
     * @param {number} [startIndex = 0] - Index to start with.
-    * @param {function} [next] - Callback when the user confirms the message. If omitted, select does not close until manually closed.
+    * @param {RetroMenu~selectCallback} [next] - Callback when the user confirms the message. If omitted, select does not close until manually closed.
     *
     * @function
     * @instance
@@ -507,7 +513,7 @@ var RetroMenu;
     * @param {string[]} options - Options to make the user select from.
     * @param {jQuery} [msg_div] - Message element to also add.
     * @param {number} [startIndex = 0] - Index to start with.
-    * @param {function} [next] - Callback when the user confirms the message. If omitted, select does not close until manually closed.
+    * @param {RetroMenu~selectCallback} [next] - Callback when the user confirms the message. If omitted, select does not close until manually closed.
     *
     * @function
     * @name RetroMenu.select_dialog
@@ -521,6 +527,14 @@ var RetroMenu;
         //and show an alert
         return m.select(text, options, msg_div, startIndex, next);
     }
+
+    /**
+    * Callback for results form select dialogs.
+    * @callback RetroMenu~selectCallback
+    * @param {number} index - Index selected by the user.
+    * @param {string} value - Value selected by the user.
+    * @this {RetroMenu} - the RetroMenu instance the alert dialog was called on.
+    */
 
 
 
@@ -633,7 +647,7 @@ var RetroMenu;
     };
 
     /**
-    * Timeout after which a click is considered a double click in ms. 
+    * Timeout after which a click is considered a double click in ms.
     * @name RetroMenu.dblclick_timeout
     * @type {number}
     * @default 250
