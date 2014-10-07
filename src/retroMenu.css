@@ -48,6 +48,7 @@ THE SOFTWARE.
     /* Links */
     color: gray;
     text-decoration: italic;
+    outline: none;
 }
 
 .RetroMenu a.active {

@@ -405,11 +405,26 @@ var RetroMenu;
 
             options.map(function(e, i){
 
+                var timeout = -1;
+
                 var $span = $("<span>").text(e).click(function(){
                     //on click, we select this one.
-                    currentIndex = i;
-                    redraw();
-                })
+
+
+                    if(timeout !== -1){
+                        clearTimeout(timeout);
+                        timeout = -1;
+                        select_div.find("form").submit();
+                    } else {
+                        timeout = setTimeout(function(){
+                            redraw();
+                            timeout = -1;
+                        }, RetroMenu.dblclick_timeout );
+
+                        //set the index and only redraw after the timeout.
+                        currentIndex = i;
+                    }
+                });
 
                 //append To the selectable element.
                 selectableElement.append(
@@ -552,11 +567,13 @@ var RetroMenu;
             as.removeClass("active");
 
             //and we are back
-            $(this._display_element).find("span.selected").removeClass("tabbed");
+            $(this._display_element)
+                .find("span.active").removeClass("tabbed").end()
+            .click();
         } else {
 
             //we are now tabbed
-            $(this._display_element).find("span.selected").addClass("tabbed");
+            $(this._display_element).find("span.active").addClass("tabbed");
 
             //we select the current one
             as.removeClass("active")
@@ -614,6 +631,15 @@ var RetroMenu;
         /** Tab backward.  */
         "SHIFT_TAB": "RetroMenu.tab_shift",
     };
+
+    /**
+    * Timeout after which a click is considered a double click in ms. 
+    * @name RetroMenu.dblclick_timeout
+    * @type {number}
+    * @default 250
+    * @static
+    */
+    RetroMenu.dblclick_timeout = 250;
 
     //check that we have jQuery
     if(!$){
