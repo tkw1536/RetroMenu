@@ -55,7 +55,7 @@ var RetroMenu;
             hook_element = document.body;
         } else if(arguments.length > 3){
             //we have too many arguments
-            throw new Exception("RetroMenu accepts at most 3 arguments. ");
+            throw new Error("RetroMenu accepts at most 3 arguments. ");
             return;
         }
 
@@ -121,8 +121,14 @@ var RetroMenu;
         // and add it to the page
         .appendTo(document.body);
 
-        //start the hacks
-        this.start_hooks();
+        //disable all event handlers.
+        this._display_element
+        .off("click.RetroMenu");
+
+        //start the hooks
+        this
+        .stop_hooks()
+        .start_hooks();
 
         return this;
     }
@@ -181,9 +187,9 @@ var RetroMenu;
             if(key == RetroMenu.keyCodes.UP){
                 event.preventDefault();
                 hook_element.trigger(RetroMenu.keyActions.UP);
-            } else if(key == key == RetroMenu.keyCodes.W){
+            } else if(key == RetroMenu.keyCodes.W){
                 hook_element.trigger(RetroMenu.keyActions.UP);
-            } else if(key == key == RetroMenu.keyCodes.DOWN){
+            } else if(key == RetroMenu.keyCodes.DOWN){
                 event.preventDefault();
                 hook_element.trigger(RetroMenu.keyActions.DOWN);
             } else if(key == RetroMenu.keyCodes.S){
@@ -230,6 +236,278 @@ var RetroMenu;
 
         return this;
     }
+
+    //
+    // DIALOG Boxes
+    //
+
+    /**
+    * Shows an alert box.
+    *
+    * @param {string} text - Text to alert the user to.
+    * @param {jQuery} [msg_div] - Message element to also add.
+    * @param {function} [next] - Callback when the user confirms the message. If omitted, alert does not close until manually closed.
+    *
+    * @function
+    * @instance
+    * @name alert
+    * @memberof RetroMenu
+    * @return {RetroMenu} - this for chaining
+    */
+    RetroMenu.prototype.alert = function(text, msg_div, next){
+
+        if(typeof msg_div == "function"){
+            //we do not have a msg
+            next =  msg_div;
+            msg_div = "";
+        }
+
+        if(typeof next == "undefined"){
+            //the next function is nothing.
+            next = false;
+        }
+
+        var me = this;
+
+        //re-init
+        this.init();
+
+        //and the hook element
+        var hook_element = this._hook_element;
+
+        //create the alert div
+        var alert_div = $("<div>").appendTo(this._display_element);
+
+
+        //create the elements.
+        alert_div.append([
+            //the text
+            $("<div>").text(text).on("click", function(){alert_div.find("form").submit(); }),
+            msg_div,
+            $("<form>")
+            .append(
+                $("<input type='submit' value='&nbsp; '>")
+            ).on("submit", function(event){
+                //ok stop things.
+                event.preventDefault();
+
+                if(typeof next == "function"){
+
+                    //remove the div
+                    alert_div.remove();
+
+                    //and re-init
+                    me.init();
+
+                    //and make the callback
+                    next.call(me);
+                } else {
+                    //Nothing is next => never close
+                    return;
+                }
+            })
+        ]);
+
+        //focus whenever we click, and now also focus
+        this._display_element
+        .on("click.RetroMenu.alert", function(){
+            alert_div.find("input[type=submit]").focus();
+        })
+        .click();
+
+        return this;
+    };
+
+    /**
+    * Shows an alert dialog using a new RetroMenu Instance.
+    *
+    * @param {string} title - Title to use for this dialog box.
+    * @param {string} text - Text to alert the user to.
+    * @param {jQuery} [msg_div] - Message element to also add.
+    * @param {function} [next] - Callback when the user confirms the message. If omitted, alert does not close until manually closed.
+    *
+    * @function
+    * @name RetroMenu.alert_dialog
+    * @static
+    * @return {RetroMenu} - newly created RetroMenu
+    */
+    RetroMenu.alert_dialog = function(title, text, msg_div, next){
+        //Create a new menu
+        var m = new RetroMenu(title);
+
+        //and show an alert
+        return m.alert(text, msg_div, next);
+    }
+
+    /**
+    * Shows a select box.
+    *
+    * @param {string} text - Text to alert the user to.
+    * @param {string[]} options - Options to make the user select from.
+    * @param {jQuery} [msg_div] - Message element to also add.
+    * @param {number} [startIndex = 0] - Index to start with.
+    * @param {function} [next] - Callback when the user confirms the message. If omitted, select does not close until manually closed.
+    *
+    * @function
+    * @instance
+    * @name select
+    * @memberof RetroMenu
+    * @return {RetroMenu} - this for chaining
+    */
+    RetroMenu.prototype.select = function(text, options, msg_div, startIndex, next){
+
+        if(typeof msg_div == "function"){
+            //we do not have a msg
+            next =  msg_div;
+            startIndex = 0;
+            msg_div = "";
+        } else if(typeof msg_div == "number"){
+            //we only have a start index
+            next = startIndex;
+            startIndex = msg_div;
+            msg_div = "";
+        } else if(typeof startIndex == "function"){
+            //we have no startIndex
+            next = startIndex;
+            startIndex = 0;
+        }
+
+        if(typeof next == "undefined"){
+            //the next function is nothing.
+            next = false;
+        }
+
+        if(options.length >= 0 && (typeof startIndex !== "number" || startIndex < 0 || startIndex % 1 != 0 || startIndex >= options.length)){
+            //startIndex must be a positve number
+            throw new Error("startIndex must be a non-negative integer no longer than the options list. ");
+            return;
+        }
+
+        var me = this;
+
+        //starting index
+        var currentIndex = startIndex;
+
+        //re-init
+        this.init();
+
+        //and the hook element
+        var hook_element = this._hook_element;
+
+        //create the alert div
+        var select_div = $("<div>").appendTo(this._display_element);
+
+        //here we make selections
+        var selectableElement = $("<div>");
+
+        var redraw = function(){
+            selectableElement.empty();
+
+            options.map(function(e, i){
+
+                var $span = $("<span>").text(e).click(function(){
+                    //on click, we select this one.
+                    currentIndex = i;
+                    redraw();
+                })
+
+                //append To the selectable element.
+                selectableElement.append(
+                    $span, "<br />"
+                )
+
+                //if its the current index, we are active.
+                if(i == currentIndex){
+                    $span.addClass("active");
+                }
+            })
+        };
+
+        //redraw once
+        redraw();
+
+        //create the elements.
+        select_div.append([
+            //the text
+            $("<div>").text(text).on("click", function(){select_div.find("form").submit(); }),
+            msg_div,
+            selectableElement,
+            $("<form>")
+            .append(
+                $("<input type='submit' value='&nbsp; '>")
+            ).on("submit", function(event){
+                //ok stop things.
+                event.preventDefault();
+
+                if(typeof next == "function"){
+
+                    //remove the div
+                    select_div.remove();
+
+                    //and re-init
+                    me.init();
+
+                    //and make the callback
+                    next.call(me, currentIndex, options[currentIndex]);
+                } else {
+                    //Nothing is next => never close
+                    return;
+                }
+            })
+        ]);
+
+        //focus whenever we click, and now also focus
+        this._display_element
+        .on("click.RetroMenu.select", function(){
+            select_div.find("input[type=submit]").focus();
+        })
+        .click();
+
+        this._hook_element
+        .on(RetroMenu.keyActions.UP, function(){
+            currentIndex--;
+            if(currentIndex < 0){
+                currentIndex += options.length;
+            }
+
+            redraw();
+        })
+        .on(RetroMenu.keyActions.DOWN, function(){
+            currentIndex++;
+            if(currentIndex >= options.length){
+                currentIndex -= options.length;
+            }
+
+            redraw();
+        });
+
+        return this;
+    };
+
+    /**
+    * Shows a select dialog using a new RetroMenu Instance.
+    *
+    * @param {string} title - Title to use for this dialog box.
+    * @param {string} text - Text to alert the user to.
+    * @param {string[]} options - Options to make the user select from.
+    * @param {jQuery} [msg_div] - Message element to also add.
+    * @param {number} [startIndex = 0] - Index to start with.
+    * @param {function} [next] - Callback when the user confirms the message. If omitted, select does not close until manually closed.
+    *
+    * @function
+    * @name RetroMenu.select_dialog
+    * @static
+    * @return {RetroMenu} - newly created RetroMenu
+    */
+    RetroMenu.select_dialog = function(title, text, options, msg_div, startIndex, next){
+        //Create a new menu
+        var m = new RetroMenu(title);
+
+        //and show an alert
+        return m.select(text, options, msg_div, startIndex, next);
+    }
+
+
 
     /**
     * Performs a tab key press.

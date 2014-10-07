@@ -10,7 +10,7 @@ $(function(){
         //do stuff
         window.myMenu = new RetroMenu("RetroMenu Demo");
 
-        //myMenu.alert("Hello World! ");
+        myMenu.select("Click to confinue",  ["OK", "Cancel"], "<a>Link 1</a> - <a>Link 2</a>", function(index, value){console.log(index); this.destroy(); });
     }
 
     //Run the example

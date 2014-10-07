@@ -23,9 +23,9 @@ Both files can be found in the src/ directory.
 RetroMenu.confirm("Are you OK?", function(response){
     //Asks the user to answer with yes or no.
     if(response){
-        RetroMenu.alert("That's great!"); //If you do not give a callback, the dialog will stay open forever.
+        RetroMenu.alert_dialog("That's great!"); //If you do not give a callback, the dialog will stay open forever.
     } else {
-        RetroMenu.alert("You should better go see a doctor. ");
+        RetroMenu.alert_dialog("You should better go see a doctor. ");
     }
 });
 ```

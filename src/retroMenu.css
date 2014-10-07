@@ -21,6 +21,8 @@ THE SOFTWARE.
 */
 
 .RetroMenu {
+    /* The main wrapped class */
+
     /* Position and Size */
     position: fixed;
     width: 100%;
@@ -37,6 +39,40 @@ THE SOFTWARE.
     text-align: center;
 }
 
-.RetroMenu > a.active {
-    color: white: 
+.RetroMenu h1 {
+    /** The headng */
+    color: white;
+}
+
+.RetroMenu a {
+    /* Links */
+    color: gray;
+    text-decoration: italic;
+}
+
+.RetroMenu a.active {
+    /* Active link */
+    color: white;
+}
+
+.RetroMenu span {
+    /* Span */
+}
+
+.RetroMenu span.active {
+    /* Active Span */
+    color: white;
+}
+
+.RetroMenu span.tabbed {
+    /* When we are not active */
+    color: gray;
+}
+
+.RetroMenu input {
+    /* Inputs */
+    outline: none;
+    border: none;
+
+    background-color: black;
 }
