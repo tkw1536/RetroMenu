@@ -537,6 +537,80 @@ var RetroMenu;
     */
 
 
+    /**
+    * Shows a confirm box.
+    *
+    * @param {string} text - Text to alert the user to.
+    * @param {string[]} options - Options to make the user select from.
+    * @param {jQuery} [msg_div] - Message element to also add.
+    * @param {string} [startIndex = True] - Default to start with
+    * @param {RetroMenu~confirmCallback} [next] - Callback when the user confirms the message. If omitted, select does not close until manually closed.
+    *
+    * @function
+    * @instance
+    * @name confirm
+    * @memberof RetroMenu
+    * @return {RetroMenu} - this for chaining
+    */
+    RetroMenu.prototype.confirm = function(text, msg_div, startIndex, next){
+
+        if(typeof msg_div == "function"){
+            //we do not have a msg
+            next =  msg_div;
+            startIndex = true;
+            msg_div = "";
+        } else if(typeof msg_div == "boolean"){
+            //we only have a start index
+            next = startIndex;
+            startIndex = msg_div;
+            msg_div = "";
+        } else if(typeof startIndex == "function"){
+            //we have no startIndex
+            next = startIndex;
+            startIndex = true;
+        }
+
+        if(typeof next == "undefined"){
+            //the next function is nothing.
+            callback = false;
+        } else {
+            //make the correct callback.
+            callback = function(e, i){
+                return next.call(this, i == 0);
+            }
+        }
+
+        return this.select(text, [RetroMenu.confirm_true, RetroMenu.confirm_false], msg_div, startIndex?0:1, callback);
+    }
+
+    /**
+    * Shows a confirm dialog using a new RetroMenu Instance.
+    *
+    * @param {string} title - Title to use for this dialog box.
+    * @param {string} text - Text to alert the user to.
+    * @param {string[]} options - Options to make the user select from.
+    * @param {jQuery} [msg_div] - Message element to also add.
+    * @param {string} [startIndex = True] - Default to start with
+    * @param {RetroMenu~confirmCallback} [next] - Callback when the user confirms the message. If omitted, select does not close until manually closed.
+    *
+    * @function
+    * @name RetroMenu.confirm_dialog
+    * @static
+    * @return {RetroMenu} - newly created RetroMenu
+    */
+    RetroMenu.confirm_dialog = function(title, text, msg_div, startIndex, next){
+        var m = new RetroMenu(title);
+
+        return m.confirm(text, msg_div, startIndex, next);
+    }
+
+    /**
+    * Callback for results form select dialogs.
+    * @callback RetroMenu~confirmCallback
+    * @param {boolean} confirm - Did the user confirm? 
+    * @this {RetroMenu} - the RetroMenu instance the alert dialog was called on.
+    */
+
 
     /**
     * Performs a tab key press.
@@ -654,6 +728,24 @@ var RetroMenu;
     * @static
     */
     RetroMenu.dblclick_timeout = 250;
+
+    /**
+    * String used as True for confirm dialogs.
+    * @name RetroMenu.confirm_true
+    * @type {string}
+    * @default "OK"
+    * @static
+    */
+    RetroMenu.confirm_true = "OK";
+    /**
+    * String used as False for confirm dialogs.
+    * @name RetroMenu.confirm_false
+    * @type {string}
+    * @default "Cancel"
+    * @static
+    */
+    RetroMenu.confirm_false = "Cancel";
+
 
     //check that we have jQuery
     if(!$){

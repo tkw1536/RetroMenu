@@ -43,6 +43,10 @@
             
             <span class="subtitle">Members</span>
             
+                <li data-name="RetroMenu.confirm_false"><a href="RetroMenu.html#confirm_false">confirm_false</a></li>
+            
+                <li data-name="RetroMenu.confirm_true"><a href="RetroMenu.html#confirm_true">confirm_true</a></li>
+            
                 <li data-name="RetroMenu.dblclick_timeout"><a href="RetroMenu.html#dblclick_timeout">dblclick_timeout</a></li>
             
                 <li data-name="RetroMenu.keyActions"><a href="RetroMenu.html#keyActions">keyActions</a></li>
@@ -62,6 +66,8 @@
             
                 <li data-name="RetroMenu~alertCallback"><a href="RetroMenu.html#alertCallback">alertCallback</a></li>
             
+                <li data-name="RetroMenu~confirmCallback"><a href="RetroMenu.html#confirmCallback">confirmCallback</a></li>
+            
                 <li data-name="RetroMenu~selectCallback"><a href="RetroMenu.html#selectCallback">selectCallback</a></li>
             
             </ul>
@@ -71,11 +77,15 @@
             
                 <li data-name="RetroMenu.alert_dialog"><a href="RetroMenu.html#alert_dialog">alert_dialog</a></li>
             
+                <li data-name="RetroMenu.confirm_dialog"><a href="RetroMenu.html#confirm_dialog">confirm_dialog</a></li>
+            
                 <li data-name="RetroMenu.example"><a href="RetroMenu.html#example">example</a></li>
             
                 <li data-name="RetroMenu.select_dialog"><a href="RetroMenu.html#select_dialog">select_dialog</a></li>
             
                 <li data-name="RetroMenu#alert"><a href="RetroMenu.html#alert">alert</a></li>
+            
+                <li data-name="RetroMenu#confirm"><a href="RetroMenu.html#confirm">confirm</a></li>
             
                 <li data-name="RetroMenu#destroy"><a href="RetroMenu.html#destroy">destroy</a></li>
             
@@ -337,6 +347,102 @@
         <h3 class="subsection-title">Members</h3>
         
         <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="confirm_false"><span class="type-signature static">static</span>RetroMenu.confirm_false<span class="type-signature type string">string</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        String used as False for confirm dialogs.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>"Cancel"</li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="confirm_true"><span class="type-signature static">static</span>RetroMenu.confirm_true<span class="type-signature type string">string</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        String used as True for confirm dialogs.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>"OK"</li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
             
 <dt>
     <div class="nameContainer">
@@ -1158,6 +1264,310 @@ newly created RetroMenu
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="confirm_dialog">
+            
+            <span class="type-signature static">static</span>RetroMenu.confirm_dialog<span class="signature">(title, text, options, <span class="optional">msg_div</span>, <span class="optional">startIndex</span>, <span class="optional">next</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="RetroMenu.html">RetroMenu</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            retroMenu.js, line 586
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Shows a confirm dialog using a new RetroMenu Instance.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Title to use for this dialog box.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Text to alert the user to.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Options to make the user select from.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>msg_div</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">jQuery</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Message element to also add.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>startIndex</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    True
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Default to start with</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>next</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="RetroMenu.html#confirmCallback">RetroMenu~confirmCallback</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Callback when the user confirms the message. If omitted, select does not close until manually closed.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+newly created RetroMenu
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="example">
             
             <span class="type-signature static">static</span>RetroMenu.example<span class="signature">()</span>
@@ -1664,6 +2074,278 @@ newly created RetroMenu
                     
                 
                 Callback when the user confirms the message. If omitted, alert does not close until manually closed.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+this for chaining
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="confirm">
+            
+            confirm<span class="signature">(text, options, <span class="optional">msg_div</span>, <span class="optional">startIndex</span>, <span class="optional">next</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="RetroMenu.html">RetroMenu</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            retroMenu.js, line 540
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Shows a confirm box.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Text to alert the user to.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Options to make the user select from.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>msg_div</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">jQuery</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Message element to also add.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>startIndex</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    True
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Default to start with</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>next</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="RetroMenu.html#confirmCallback">RetroMenu~confirmCallback</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Callback when the user confirms the message. If omitted, select does not close until manually closed.</td>
         </tr>
 	
 	
@@ -2322,7 +3004,7 @@ this for chaining
     
         
         <div class="tag-source">
-            retroMenu.js, line 541
+            retroMenu.js, line 615
         </div>
         
     </div>
@@ -2475,6 +3157,125 @@ this for chaining
         <ul><li>{<a href="RetroMenu.html">RetroMenu</a>}</li></ul>
     
     
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="confirmCallback">
+            
+            confirmCallback<span class="signature">(confirm)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            retroMenu.js, line 607
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Callback for results form select dialogs.
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="RetroMenu.html">RetroMenu</a>}</li></ul>
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>confirm</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                Did the user confirm?</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
     
     
     
@@ -2673,7 +3474,7 @@ this for chaining
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Tue Oct 07 2014 10:49:51 GMT+0200 (CEST)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Tue Oct 07 2014 16:07:33 GMT+0200 (CEST)
         </footer>
     </div>
 </div>
