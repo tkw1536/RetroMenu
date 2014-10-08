@@ -87,9 +87,6 @@ var RetroMenu;
         * @private
         */
         this._hook_element = $(hook_element);
-
-        //init it
-        this.init();
     };
 
     //
@@ -360,14 +357,40 @@ var RetroMenu;
     * @memberof RetroMenu
     * @return {RetroMenu} - this for chaining
     */
-    RetroMenu.prototype.prompt = function(text, def, hide_input, msg_div, next){
+    RetroMenu.prototype.prompt = function(text){
+        /* def, hide_input, msg_div, next */
 
 
-        //first handle all the argument cases
-        console.log(arguments);
+        //string string? boolean? (!function)? function?
+        var argIndex = 1;
 
-        throw new Error("Error: Arguments unimplemented! ");
-        return; 
+        if(typeof arguments[argIndex] == "string"){
+            var def = arguments[argIndex];
+            argIndex++;
+        } else {
+            var def = "";
+        }
+
+        if(typeof arguments[argIndex] == "boolean"){
+            var hide_input = arguments[argIndex];
+            argIndex++;
+        } else {
+            var hide_input = false;
+        }
+
+        if(typeof arguments[argIndex] !== "function"){
+            var msg_div = arguments[argIndex];
+            argIndex++;
+        } else {
+            var msg_div = "";
+        }
+
+        if(typeof arguments[argIndex] == "function"){
+            var next = arguments[argIndex];
+            argIndex++;
+        } else {
+            var next = false;
+        }
 
 
         var me = this;
@@ -381,7 +404,7 @@ var RetroMenu;
         //create the alert div
         var prompt_div = $("<div>").appendTo(this._display_element);
 
-        var the_input = $("<input type='text'>");
+        var the_input = $("<input type='text'>").val(def);
 
         //Make the input
         if(hide_input){
@@ -391,7 +414,7 @@ var RetroMenu;
         //create the elements.
         prompt_div.append([
             //the text
-            $("<div>").text(text).on("click", function(){alert_div.find("form").submit(); }),
+            $("<div>").text(text).on("click", function(){prompt_div.find("form").submit(); }),
             msg_div,
             $("<form>")
             .append(

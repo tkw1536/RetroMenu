@@ -2,17 +2,14 @@
 
 $(function(){
 
-    /** Simple Example for RetroMenu.
+    /** When called, registers all the example code on the demo page.
     * @name RetroMenu.example
     * @function
     */
     RetroMenu.example = function(){
-        //do stuff
         window.myMenu = new RetroMenu("RetroMenu Demo");
-
-        myMenu.prompt("What is your name?", function(res){console.log(res); this.destroy(); });
     }
 
-    //Run the example
+    //call it now!
     RetroMenu.example();
 })

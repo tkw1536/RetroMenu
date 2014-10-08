@@ -30,6 +30,8 @@ RetroMenu.confirm("Are you OK?", function(response){
 });
 ```
 
+You might also want to use a cool font such as [Press Start 2P](https://www.google.com/fonts/specimen/Press+Start+2P), but you will need to set that up yourself. Just apply it to the ```.RetroMenu``` selector. 
+
 A complete (simple) example can be found in index.html.
 
 A full documentation can be found under doc or generated using [JSDoc](https://github.com/jsdoc3/jsdoc):  

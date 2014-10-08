@@ -68,6 +68,8 @@
             
                 <li data-name="RetroMenu~confirmCallback"><a href="RetroMenu.html#confirmCallback">confirmCallback</a></li>
             
+                <li data-name="RetroMenu~promptCallback"><a href="RetroMenu.html#promptCallback">promptCallback</a></li>
+            
                 <li data-name="RetroMenu~selectCallback"><a href="RetroMenu.html#selectCallback">selectCallback</a></li>
             
             </ul>
@@ -90,6 +92,8 @@
                 <li data-name="RetroMenu#destroy"><a href="RetroMenu.html#destroy">destroy</a></li>
             
                 <li data-name="RetroMenu#init"><a href="RetroMenu.html#init">init</a></li>
+            
+                <li data-name="RetroMenu#prompt"><a href="RetroMenu.html#prompt">prompt</a></li>
             
                 <li data-name="RetroMenu#select"><a href="RetroMenu.html#select">select</a></li>
             
@@ -1053,7 +1057,7 @@
     
         
         <div class="tag-source">
-            retroMenu.js, line 321
+            retroMenu.js, line 318
         </div>
         
     </div>
@@ -1271,7 +1275,7 @@ newly created RetroMenu
     
         
         <div class="tag-source">
-            retroMenu.js, line 586
+            retroMenu.js, line 700
         </div>
         
     </div>
@@ -1586,7 +1590,7 @@ newly created RetroMenu
     
     
     <div class="description">
-        Simple Example for RetroMenu.
+        When called, registers all the example code on the demo page.
     </div>
     
 
@@ -1646,7 +1650,7 @@ newly created RetroMenu
     
         
         <div class="tag-source">
-            retroMenu.js, line 508
+            retroMenu.js, line 622
         </div>
         
     </div>
@@ -1950,7 +1954,7 @@ newly created RetroMenu
     
         
         <div class="tag-source">
-            retroMenu.js, line 244
+            retroMenu.js, line 241
         </div>
         
     </div>
@@ -2140,7 +2144,7 @@ this for chaining
     
         
         <div class="tag-source">
-            retroMenu.js, line 540
+            retroMenu.js, line 654
         </div>
         
     </div>
@@ -2412,7 +2416,7 @@ this for chaining
     
         
         <div class="tag-source">
-            retroMenu.js, line 136
+            retroMenu.js, line 133
         </div>
         
     </div>
@@ -2492,7 +2496,7 @@ this for chaining
     
         
         <div class="tag-source">
-            retroMenu.js, line 99
+            retroMenu.js, line 96
         </div>
         
     </div>
@@ -2565,6 +2569,282 @@ this for chaining
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="prompt">
+            
+            prompt<span class="signature">(text, <span class="optional">def</span>, <span class="optional">hide_input</span>, <span class="optional">msg_div</span>, <span class="optional">next</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="RetroMenu.html">RetroMenu</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            retroMenu.js, line 345
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Shows an prompt box.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Text to prompt the user for.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>def</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    ""
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The default response to start with.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>hide_input</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    False
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Should input be hidden (password prompt)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>msg_div</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">jQuery</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Message element to also add.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>next</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="RetroMenu.html#promptCallback">RetroMenu~promptCallback</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Callback when the user confirms the message. If omitted, alert does not close until manually closed.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+this for chaining
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="select">
             
             select<span class="signature">(text, options, <span class="optional">msg_div</span>, <span class="optional">startIndex</span>, <span class="optional">next</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="RetroMenu.html">RetroMenu</a>}</span>
@@ -2572,7 +2852,7 @@ this for chaining
     
         
         <div class="tag-source">
-            retroMenu.js, line 348
+            retroMenu.js, line 462
         </div>
         
     </div>
@@ -2844,7 +3124,7 @@ this for chaining
     
         
         <div class="tag-source">
-            retroMenu.js, line 162
+            retroMenu.js, line 159
         </div>
         
     </div>
@@ -2924,7 +3204,7 @@ this for chaining
     
         
         <div class="tag-source">
-            retroMenu.js, line 218
+            retroMenu.js, line 215
         </div>
         
     </div>
@@ -3004,7 +3284,7 @@ this for chaining
     
         
         <div class="tag-source">
-            retroMenu.js, line 615
+            retroMenu.js, line 729
         </div>
         
     </div>
@@ -3135,7 +3415,7 @@ this for chaining
     
         
         <div class="tag-source">
-            retroMenu.js, line 342
+            retroMenu.js, line 339
         </div>
         
     </div>
@@ -3209,7 +3489,7 @@ this for chaining
     
         
         <div class="tag-source">
-            retroMenu.js, line 607
+            retroMenu.js, line 721
         </div>
         
     </div>
@@ -3321,6 +3601,125 @@ this for chaining
                 
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="promptCallback">
+            
+            promptCallback<span class="signature">(result)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            retroMenu.js, line 455
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Callback for results for prompt dialogs.
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="RetroMenu.html">RetroMenu</a>}</li></ul>
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>result</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The result the user enters in the prompt.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="selectCallback">
             
             selectCallback<span class="signature">(index, value)</span>
@@ -3328,7 +3727,7 @@ this for chaining
     
         
         <div class="tag-source">
-            retroMenu.js, line 531
+            retroMenu.js, line 645
         </div>
         
     </div>
@@ -3474,7 +3873,7 @@ this for chaining
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Tue Oct 07 2014 16:07:33 GMT+0200 (CEST)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Wed Oct 08 2014 03:41:12 GMT+0200 (CEST)
         </footer>
     </div>
 </div>
