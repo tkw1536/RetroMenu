@@ -21,8 +21,9 @@
     <!-- Example code -->
     <script type="text/javascript" src="src/example.js"></script>
 
-    <!-- Bootstrap for show -->
+    <!-- BS + syntax highlighting-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css">
 </head>
 <body>
     <div class="container">
@@ -37,8 +38,61 @@
         </div>
 
 
+        <div class="row">
+            <div class="col-md-3">
+                Create a simple dialog that can be closed by pressing &lt;ENTER&gt;. Give it a title and some text.
+                <br /><br />
+                Alternatively, it can be closed by clicking on the message.
+            </div>
+            <div class="col-md-9">
+                <pre>
+<code class="language-javascript">//show a nice dialog
+RetroMenu.alert_dialog("Message", "I am a nice message. ", function(){
+    //destroy it on enter
+    this.destroy();
+});    </code>
+                </pre>
+
+                <a class="btn btn-default" id="example1">Run Code</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-9">
+                <pre>
+<code class="language-javascript">RetroMenu.confirm_dialog("Confirm me", "Are you OK?", function(response){
+    //close dialog
+    this.destroy();
+
+    //Did we answer OK or cancel.
+    if(response){
+        RetroMenu.alert_dialog("Response", "That's great!", function(){
+            this.destroy();
+        });
+    } else {
+        RetroMenu.alert_dialog("Response", "You should better go see a doctor. ", function(){
+            this.destroy();
+        });
+    }
+});</code>
+                </pre>
+
+                <a class="btn btn-default" id="example2">Run Code</a>
+            </div>
+
+            <div class="col-md-3">
+                Create a confirm dialog where the user can respond with "OK" or "Cancel". Confirm using &lt;ENTER&gt; and navigate using W - A - S - D or the arrow keys.
+                <br /><br />
+                Alternatively, you can close it by clicking on the question. You can select by clicking on the items as well. Double-clicking will submit the dialog.
+            </div>
+        </div>
+
+
+
     </div><!-- /.container -->
 
+    <!-- BS + syntax highlightin -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
 </body>
 </html>

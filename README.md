@@ -20,7 +20,7 @@ To use it include the JavaScript and CSS files and jQuery.
 Both files can be found in the src/ directory.
 
 ```js
-RetroMenu.confirm("Are you OK?", function(response){
+RetroMenu.confirm_dialog("Are you OK?", function(response){
     //Asks the user to answer with yes or no.
     if(response){
         RetroMenu.alert_dialog("That's great!"); //If you do not give a callback, the dialog will stay open forever.
@@ -30,7 +30,7 @@ RetroMenu.confirm("Are you OK?", function(response){
 });
 ```
 
-You might also want to use a cool font such as [Press Start 2P](https://www.google.com/fonts/specimen/Press+Start+2P), but you will need to set that up yourself. Just apply it to the ```.RetroMenu``` selector. 
+You might also want to use a cool font such as [Press Start 2P](https://www.google.com/fonts/specimen/Press+Start+2P), but you will need to set that up yourself. Just apply it to the ```.RetroMenu``` selector.
 
 A complete (simple) example can be found in index.html.
 
