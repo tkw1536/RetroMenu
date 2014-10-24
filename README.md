@@ -1,6 +1,8 @@
 # RetroMenu
 
-A retro-styled menu in JavaScript, HTML & CSS. Originally developed for [POKE THE GAME](https://github.com/Poke-the-Game/Poke).
+A retro-styled menu in JavaScript, HTML & CSS. Originally developed for [POKE THE GAME](https://github.com/Poke-the-Game/Poke).  
+
+[Demo](https://tkw1536.github.io/RetroMenu/) - [API documentation](https://tkw1536.github.io/RetroMenu/doc/)
 
 ## Usage & Example
 
