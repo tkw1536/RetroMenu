@@ -445,11 +445,36 @@ var RetroMenu;
         this._display_element
         .on("click.RetroMenu.prompt", function(){
             the_input.focus();
-        })
-        .click();
+        });
+
+        //select the input => marks the default
+        the_input.select();
 
         return this;
     };
+
+    /**
+    * Shows a prompt box using a new RetroMenu instance.
+    *
+    * @param {string} title - Title of this RetroMenu instance.
+    * @param {string} text - Text to prompt the user for.
+    * @param {string} [def = ""] - The default response to start with.
+    * @param {boolean} [hide_input = False] - Should input be hidden (password prompt)
+    * @param {jQuery} [msg_div] - Message element to also add.
+    * @param {RetroMenu~promptCallback} [next] - Callback when the user confirms the message. If omitted, alert does not close until manually closed.
+    *
+    * @function
+    * @name RetroMenu.prompt_dialog
+    * @static
+    * @return {RetroMenu} - newly created RetroMenu
+    */
+    RetroMenu.prompt_dialog = function(title, text, def, hide_input, msg_div, next){
+        //Create a new menu
+        var m = new RetroMenu(title);
+
+        //and show a prompt
+        return m.prompt(text, def, hide_input, msg_div, next);
+    }
 
 
     /**

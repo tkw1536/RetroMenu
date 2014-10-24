@@ -34,7 +34,17 @@ $(function(){
                 }
             })
         });
-        }
+
+        $("#example3").click(function(e){
+            e.preventDefault();
+
+            RetroMenu.prompt_dialog("Question", "What is your name?", "<Your name here>", function(name){
+                this.destroy();
+
+                RetroMenu.alert_dialog("Response", "Hello "+name, function(){this.destroy(); });
+            });
+        });
+    }
 
     //call it now!
     RetroMenu.example();

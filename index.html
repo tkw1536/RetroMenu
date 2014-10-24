@@ -22,7 +22,7 @@
     <script type="text/javascript" src="src/example.js"></script>
 
     <!-- BS + syntax highlighting-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css">
 </head>
 <body>
@@ -34,6 +34,11 @@
                 <h1>RetroMenu.js</h1>
                 <p>A retro-styled menu in JavaScript, HTML &amp; CSS. </p>
                 <p>Originally developed for <a href="https://github.com/Poke-the-Game/Poke" target="_blank">POKE THE GAME</a>. </p>
+                <p>
+                    You can easily create alerts, prompts and confirm dialogs. As such it is also a very nice replacement for the built-in window methods.
+
+                </p>
+                <p><a class="btn btn-primary btn-lg" role="button" href="doc/index.html">API Documentation</a></p>
             </div>
         </div>
 
@@ -87,12 +92,27 @@ RetroMenu.alert_dialog("Message", "I am a nice message. ", function(){
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-3">
+                Create a prompt dialog where you can easily enter text.
+            </div>
+            <div class="col-md-9">
+                <pre>
+<code class="language-javascript">RetroMenu.prompt_dialog("Question", "What is your name?", "&lt;Your name here&gt;", function(name){
+          this.destroy();
+          RetroMenu.alert_dialog("Response", "Hello "+name, function(){this.destroy(); });
+      });</code>
+                </pre>
+
+                <a class="btn btn-default" id="example3">Run Code</a>
+            </div>
+        </div>
 
 
     </div><!-- /.container -->
 
     <!-- BS + syntax highlightin -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
 </body>
 </html>
