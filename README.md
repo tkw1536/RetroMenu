@@ -8,7 +8,7 @@ A retro-styled menu in JavaScript, HTML & CSS. Originally developed for [POKE TH
 
 RetroMenu depends on [jQuery](https://jquery.com) only.
 
-To use it include the JavaScript and CSS files and jQuery.
+To use it include the JavaScript and CSS files and jQuery:
 
 ```html
 <!-- Include jQuery -->
@@ -19,7 +19,11 @@ To use it include the JavaScript and CSS files and jQuery.
 <link rel="stylesheet" type="text/css" href="/path/to/retroMenu.css">
 ```
 
-Both files can be found in the src/ directory.
+Both files can be found in the src/ directory. You can also find it on bower:
+
+```bash
+bower install retro-menu
+```
 
 ```js
 RetroMenu.confirm_dialog("Are you OK?", function(response){

@@ -1,0 +1,28 @@
+{
+  "name": "retro-menu",
+  "version": "1.0.0",
+  "homepage": "https://github.com/tkw1536/RetroMenu",
+  "authors": [
+    "Tom Wiesing <tkw01536@gmail.com>"
+  ],
+  "description": "retro-styled menu in JavaScript, HTML & CSS originally developed for POKE THE GAME.",
+  "main": [
+    "src/retroMenu.js",
+    "src/retroMenu.css"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1"
+  },
+  "devDependencies": {
+    "prismjs": "*",
+    "bootstrap": "~3.2.0"
+  }
+}

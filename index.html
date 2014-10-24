@@ -9,7 +9,7 @@
     <title>RetroMenu example. </title>
 
     <!-- Include jQuery -->
-    <script type="text/javascript" src="lib/jquery/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- Include RetroMenu -->
     <script type="text/javascript" src="src/retroMenu.js"></script>
@@ -22,8 +22,8 @@
     <script type="text/javascript" src="src/example.js"></script>
 
     <!-- BS + syntax highlighting-->
-    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="lib/prismjs/prism.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/prismjs/prism.css">
 </head>
 <body>
     <div class="container">
@@ -38,7 +38,11 @@
                     You can easily create alerts, prompts and confirm dialogs. As such it is also a very nice replacement for the built-in window methods.
 
                 </p>
-                <p><a class="btn btn-primary btn-lg" role="button" href="doc/index.html">API Documentation</a></p>
+                <p>
+                    <a class="btn btn-primary btn-lg" role="button" href="doc/index.html">API Documentation</a>
+                    -
+                    <a class="btn btn-primary btn-lg" role="button" href="https://github.com/tkw1536/RetroMenu">Source code</a>
+                </p>
             </div>
         </div>
 
@@ -112,7 +116,7 @@ RetroMenu.alert_dialog("Message", "I am a nice message. ", function(){
     </div><!-- /.container -->
 
     <!-- BS + syntax highlightin -->
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="lib/prismjs/prism.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/prismjs/prism.js"></script>
 </body>
 </html>
