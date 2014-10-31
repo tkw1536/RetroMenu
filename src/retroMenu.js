@@ -193,7 +193,7 @@ var RetroMenu;
                 hook_element.trigger(RetroMenu.keyActions.DOWN);
             } else if(key == RetroMenu.keyCodes.TAB){
                 event.preventDefault();
-                if(shifted){
+                if(shifted){f
                     hook_element.trigger(RetroMenu.keyActions.SHIFT_TAB);
                 } else {
                     hook_element.trigger(RetroMenu.keyActions.TAB);
@@ -834,7 +834,7 @@ var RetroMenu;
         /** The W key */
         "W": 87,
         /** The D key */
-        "D": 68,
+        "S": 83,
 
         /** The TAB key */
         "TAB": 9
